@@ -1,2 +1,3 @@
 raw2digit: "DataDistribution QualityControl" reco,1,1,"SHMSIZE=128000000000 testing/detectors/MCH/raw2digit.sh"
 raw2digit-with-sampling: "DataDistribution QualityControl" reco,1,1,"SHMSIZE=128000000000 testing/detectors/MCH/raw2digit-with-sampling.sh"
+raw2digit-with-qc: "DataDistribution QualityControl" reco,1,1,"SHMSIZE=128000000000 WORKFLOWMODE=dds QCJSON=/home/laphecet/O2DataProcessing/testing/detectors/MCH/mch-qc-physics.json testing/detectors/MCH/raw2digit-with-qc.sh"

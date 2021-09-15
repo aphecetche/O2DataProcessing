@@ -7,6 +7,7 @@ ARGS_ALL="--session default --severity $SEVERITY --shm-segment-id $NUMAID --shm-
 ARGS_ALL+=" --infologger-severity $SEVERITY"
 #ARGS_ALL+=" --monitoring-backend influxdb-unix:///tmp/telegraf.sock"
 ARGS_ALL_CONFIG="NameConf.mDirGRP=$FILEWORKDIR;NameConf.mDirGeom=$FILEWORKDIR;NameConf.mDirCollContext=$FILEWORKDIR;NameConf.mDirMatLUT=$FILEWORKDIR;keyval.input_dir=$FILEWORKDIR;keyval.output_dir=/dev/null"
+ARGS_ALL_CONFIG="${ARGS_ALL_CONFIG};MCHCoDecParam.sampaBcOffset=913000"
 
 PROXY_INSPEC="A:MCH/RAWDATA;dd:FLP/DISTSUBTIMEFRAME/0;eos:***/INFORMATION"
 
