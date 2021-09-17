@@ -15,5 +15,5 @@ o2-dpl-raw-proxy $ARGS_ALL \
     --dataspec "$PROXY_INSPEC" \
     --readout-proxy "--channel-config 'name=readout-proxy,type=pull,method=connect,address=ipc://@$INRAWCHANNAME,transport=shmem,rateLogging=1'" \
     | o2-mch-raw-to-digits-workflow $ARGS_ALL \
-    --configKeyValues "$ARGS_ALL_CONFIG" \
+    --configKeyValues "$ARGS_ALL_CONFIG" --ignore-dist-stf \
     | o2-dpl-run $ARGS_ALL $GLOBALDPLOPT --dds
