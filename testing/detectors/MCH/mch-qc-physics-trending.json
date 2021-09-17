@@ -25,8 +25,7 @@
 		"type": "direct",
 		"query" : "digits:MCH/DIGITS;orbits:MCH/ORBITS"
 	      },
-	      "location": "remote",
-	      "remoteMachine": "epn102-ib"
+	      "location": "remote"
 	    }
 	  },
 	  "checks": {
@@ -35,7 +34,6 @@
 	      "className": "o2::quality_control_modules::muonchambers::PhysicsCheck",
 	      "moduleName": "QcMuonChambers",
 	      "policy": "OnAll",
-	      "detectorName": "MCH",
 	      "dataSource": [{
 		"type": "Task",
 		"name": "QcTaskMCHDigits",
