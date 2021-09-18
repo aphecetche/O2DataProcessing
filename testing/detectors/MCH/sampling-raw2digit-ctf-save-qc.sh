@@ -29,7 +29,8 @@ WORKFLOW+="o2-mch-raw-to-digits-workflow $ARGS_ALL --configKeyValues \"$ARGS_ALL
 WORKFLOW+="o2-mch-entropy-encoder-workflow $ARGS_ALL --configKeyValues \"$ARGS_ALL_CONFIG\" |" 
 
 # Write CTF
-WORKFLOW+="o2-ctf-writer-workflow $ARGS_ALL --onlyDet MCH --configKeyValues \"$ARGS_ALL_CONFIG\" --output-dir /tmp/eosbuffer --min-file-size 100000 --max-file-size 2000000 | "
+#WORKFLOW+="o2-ctf-writer-workflow $ARGS_ALL --onlyDet MCH --configKeyValues \"$ARGS_ALL_CONFIG\" --output-dir /tmp/eosbuffer --min-file-size 100000 --max-file-size 2000000 | "
+WORKFLOW+="o2-ctf-writer-workflow $ARGS_ALL --onlyDet MCH --configKeyValues \"$ARGS_ALL_CONFIG\" --output-dir /tmp/eosbuffer  | "
 
 if [ -n "$QCJSON" ]; then
   # Perform quality control
