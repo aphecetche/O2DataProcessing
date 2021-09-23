@@ -8,3 +8,4 @@ sampling-raw2digit-ctf-qc: "DataDistribution QualityControl" reco,2,2,"SHMSIZE=1
 sampling-raw2digit-ctf-save-qc: "DataDistribution QualityControl" reco,2,2,"SHMSIZE=128000000000 WORKFLOWMODE=dds QCJSON=/home/laphecet/O2DataProcessing/testing/detectors/MCH/mch-qc-physics.json testing/detectors/MCH/sampling-raw2digit-ctf-save-qc.sh"
 raw2digit-ctf-dictionary: "DataDistribution QualityControl" reco,1,1,"SHMSIZE=128000000000 WORKFLOWMODE=dds QCJSON=/home/laphecet/O2DataProcessing/testing/detectors/MCH/mch-qc-physics.json testing/detectors/MCH/raw2digit-ctf-dictionary.sh"
 sampling-raw2digit-ctf-dictionary: "DataDistribution QualityControl" reco,1,1,"SHMSIZE=128000000000 WORKFLOWMODE=dds QCJSON=/home/laphecet/O2DataProcessing/testing/detectors/MCH/mch-qc-physics.json testing/detectors/MCH/sampling-raw2digit-ctf-dictionary.sh"
+tf: "DataDistribution QualityControl" reco,2,2,"SHMSIZE=128000000000 WORKFLOWMODE=dds testing/detectors/MCH/tf.sh"
