@@ -26,14 +26,15 @@ WORKFLOW+="o2-datasampling-standalone $ARGS_ALL --config json:/${DATASAMPLING_JS
 WORKFLOW+="o2-mch-raw-to-digits-workflow $ARGS_ALL_0 --infologger-severity error --severity error --configKeyValues \"$ARGS_ALL_CONFIG\" --dataspec ${DECOD_INSPEC} --ignore-dist-stf |" 
     
 # Encode for CTF
-WORKFLOW+="o2-mch-entropy-encoder-workflow $ARGS_ALL --configKeyValues \"$ARGS_ALL_CONFIG\" |" 
+WORKFLOW+="o2-mch-entropy-encoder-workflow --ctf-dict \"$HOME/ctf_dictionary.root\" $ARGS_ALL --configKeyValues \"$ARGS_ALL_CONFIG\" |" 
 
 # Write CTF
 WORKFLOW+="o2-ctf-writer-workflow $ARGS_ALL_0 --severity info --infologger-severity warning --onlyDet MCH --configKeyValues \"$ARGS_ALL_CONFIG\" --output-dir /tmp/eosbuffer --min-file-size 100000000 --ctf-dict-dir ./ --output-type dict --save-dict-after 50 | "
 
 if [ -n "$QCJSON" ]; then
   # Perform quality control
-  WORKFLOW+="o2-qc -b ${ARGS_ALL} --config json:/$QCJSON  | "
+  WORKFLOW+="o2-qc -b --local --host epn ${ARGS_ALL} --config json:/$QCJSON  | "
+  # WORKFLOW+="o2-qc -b ${ARGS_ALL} --config json:/$QCJSON  | "
 fi
 
 WORKFLOW+=" o2-dpl-run ${ARGS_ALL} ${GLOBALDPLOPT}"
