@@ -25,5 +25,5 @@ export GEN_TOPO_IGNORE_ERROR=1 # to bypass QC warnings
 
 /home/epn/pdp/gen_topo.sh > $HOME/topos/${GEN_TOPO_WORKFLOW_NAME}.xml
 
-sed -i 's/--plugin odc/--plugin dds/g' $HOME/topos/${GEN_TOPO_WORKFLOW_NAME}.xml
-sed -i 's/--dds/--dump/g' $HOME/topos/${GEN_TOPO_WORKFLOW_NAME}.xml
+# sed -i 's/--plugin odc/--plugin dds/g' $HOME/topos/${GEN_TOPO_WORKFLOW_NAME}.xml
+# sed -i 's/--dds/--dump/g' $HOME/topos/${GEN_TOPO_WORKFLOW_NAME}.xml
