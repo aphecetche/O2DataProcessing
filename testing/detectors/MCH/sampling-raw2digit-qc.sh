@@ -1,11 +1,11 @@
-
 #!/usr/bin/env bash
 
 source common/setenv.sh
 
 SEVERITY=warning
-ARGS_ALL="--session default --severity $SEVERITY --shm-segment-id $NUMAID --shm-segment-size $SHMSIZE"
-ARGS_ALL+=" --infologger-severity $SEVERITY"
+ARGS_ALL_0="--session default --shm-segment-id $NUMAID --shm-segment-size $SHMSIZE"
+ARGS_ALL="${ARGS_ALL_0} --infologger-severity $SEVERITY --severity $SEVERITY"
+
 #ARGS_ALL+=" --monitoring-backend influxdb-unix:///tmp/telegraf.sock"
 ARGS_ALL_CONFIG="NameConf.mDirGRP=$FILEWORKDIR;NameConf.mDirGeom=$FILEWORKDIR;NameConf.mDirCollContext=$FILEWORKDIR;NameConf.mDirMatLUT=$FILEWORKDIR;keyval.input_dir=$FILEWORKDIR;keyval.output_dir=/dev/null"
 ARGS_ALL_CONFIG="${ARGS_ALL_CONFIG};MCHCoDecParam.sampaBcOffset=913000"
@@ -23,11 +23,12 @@ WORKFLOW="o2-dpl-raw-proxy $ARGS_ALL \
 WORKFLOW+="o2-datasampling-standalone $ARGS_ALL --config json:/${DATASAMPLING_JSON} |" 
 
 # Decode raw data
-WORKFLOW+="o2-mch-raw-to-digits-workflow $ARGS_ALL --configKeyValues \"$ARGS_ALL_CONFIG\" --dataspec ${DECOD_INSPEC} --ignore-dist-stf |" 
+WORKFLOW+="o2-mch-raw-to-digits-workflow $ARGS_ALL_0 --infologger-severity error --severity error --configKeyValues \"$ARGS_ALL_CONFIG\" --dataspec ${DECOD_INSPEC} --ignore-dist-stf |" 
     
 if [ -n "$QCJSON" ]; then
   # Perform quality control
-  WORKFLOW+="o2-qc -b ${ARGS_ALL} --config json:/$QCJSON  | "
+  WORKFLOW+="o2-qc -b --local --host epn ${ARGS_ALL} --config json:/$QCJSON  | "
+  # WORKFLOW+="o2-qc -b ${ARGS_ALL} --config json:/$QCJSON  | "
 fi
 
 WORKFLOW+=" o2-dpl-run ${ARGS_ALL} ${GLOBALDPLOPT}"
@@ -40,4 +41,3 @@ else
   WORKFLOW+=" --$WORKFLOWMODE"
   eval $WORKFLOW
 fi
-
