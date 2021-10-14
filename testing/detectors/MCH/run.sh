@@ -13,7 +13,7 @@ export GEN_TOPO_HASH=0                                               # Specify p
 export GEN_TOPO_SOURCE=/home/laphecet/O2DataProcessing            # Path to O2DataProcessing repository
 
 export GEN_TOPO_LIBRARY_FILE=testing/detectors/MCH/workflows.desc    # Topology description library file to load
-export GEN_TOPO_WORKFLOW_NAME=sampling-raw2digit-ctf-save-qc # Name of workflow in topology description library
+export GEN_TOPO_WORKFLOW_NAME=sampling-raw2digit-qc # Name of workflow in topology description library
 export WORKFLOW_DETECTORS=ALL                                        # Optional parameter for the workflow: Detectors to run reconstruction for (comma-separated list)
 export WORKFLOW_DETECTORS_QC=                                        # Optional parameter for the workflow: Detectors to run QC for
 export WORKFLOW_DETECTORS_CALIB=                                     # Optional parameters for the workflow: Detectors to run calibration for
