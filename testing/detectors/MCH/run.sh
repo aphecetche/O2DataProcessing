@@ -13,13 +13,16 @@ export GEN_TOPO_HASH=0                                               # Specify p
 export GEN_TOPO_SOURCE=/home/laphecet/O2DataProcessing            # Path to O2DataProcessing repository
 
 export GEN_TOPO_LIBRARY_FILE=testing/detectors/MCH/workflows.desc    # Topology description library file to load
-export GEN_TOPO_WORKFLOW_NAME=sampling-raw2digit-qc # Name of workflow in topology description library
-export WORKFLOW_DETECTORS=ALL                                        # Optional parameter for the workflow: Detectors to run reconstruction for (comma-separated list)
+export GEN_TOPO_WORKFLOW_NAME=ctf # Name of workflow in topology description library
+export WORKFLOW_DETECTORS=MCH                                           # Optional parameter for the workflow: Detectors to run reconstruction for (comma-separated list)
 export WORKFLOW_DETECTORS_QC=                                        # Optional parameter for the workflow: Detectors to run QC for
 export WORKFLOW_DETECTORS_CALIB=                                     # Optional parameters for the workflow: Detectors to run calibration for
 export WORKFLOW_PARAMETERS=                                          # Additional parameters for the workflow
 export RECO_NUM_NODES_OVERRIDE=0                                     # Override the number of EPN compute nodes to use (default is specified in description library file)
 export NHBPERTF=128                                                  # Number of HBF per TF
+export MULTIPLICITY_FACTOR_RAWDECODERS=1                             # Factor to scale number of raw decoders with
+export MULTIPLICITY_FACTOR_CTFENCODERS=1                             # Factor to scale number of CTF encoders with
+export MULTIPLICITY_FACTOR_REST=1                                    # Factor to scale number of other processes with
 
 export GEN_TOPO_IGNORE_ERROR=1 # to bypass QC warnings
 

@@ -23,7 +23,8 @@ WORKFLOW="o2-dpl-raw-proxy $ARGS_ALL \
 WORKFLOW+="o2-datasampling-standalone $ARGS_ALL --config json:/${DATASAMPLING_JSON} |" 
 
 # Decode raw data
-WORKFLOW+="o2-mch-raw-to-digits-workflow $ARGS_ALL_0 --infologger-severity error --severity error --configKeyValues \"$ARGS_ALL_CONFIG\" --dataspec ${DECOD_INSPEC} --ignore-dist-stf |" 
+#WORKFLOW+="o2-mch-raw-to-digits-workflow $ARGS_ALL_0 --infologger-severity error --severity error --configKeyValues \"$ARGS_ALL_CONFIG\" --dataspec ${DECOD_INSPEC} --ignore-dist-stf |" 
+WORKFLOW+="o2-mch-raw-to-digits-workflow $ARGS_ALL_0 --infologger-severity error --severity error --error-log-frequency 3000 --configKeyValues \"$ARGS_ALL_CONFIG\" --dataspec ${DECOD_INSPEC}  |" 
     
 if [ -n "$QCJSON" ]; then
   # Perform quality control
