@@ -2,4 +2,4 @@ sampling-raw2digit-ctf-save-qc: "O2PDPSuite" reco,2,2,"SHMSIZE=128000000000 WORK
 sampling-raw2digit-qc: "O2PDPSuite" reco,2,2,"SHMSIZE=128000000000 WORKFLOWMODE=dds QCJSON=/home/laphecet/O2DataProcessing/testing/detectors/MCH/mch-qc-physics.json testing/detectors/MCH/sampling-raw2digit-qc.sh"
 raw2digit: "O2PDPSuite" reco,5,5,"SHMSIZE=128000000000 WORKFLOWMODE=dds WRITE_CTF=1 testing/detectors/MCH/raw2digit.sh"
 sampling-raw2digit: "O2PDPSuite" reco,5,5,"SHMSIZE=128000000000 WORKFLOWMODE=dds testing/detectors/MCH/sampling-raw2digit-qc.sh"
-ctf: "O2PDPSuite" reco,5,5,"SHMSIZE=128000000000 WORKFLOWMODE=print production/dpl-workflow.sh"
+ctf: "O2PDPSuite" reco,5,5,"SHMSIZE=128000000000 WORKFLOWMODE=dds production/dpl-workflow.sh"
