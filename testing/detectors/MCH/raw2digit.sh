@@ -17,14 +17,14 @@ WORKFLOW="o2-dpl-raw-proxy $ARGS_ALL \
   --readout-proxy \"--channel-config 'name=readout-proxy,type=pull,method=connect,address=ipc://@$INRAWCHANNAME,transport=shmem,rateLogging=1'\" |"
 
 # Decode raw data
-WORKFLOW+="o2-mch-raw-to-digits-workflow $ARGS_ALL_0 --infologger-severity error --severity warning --error-log-frequency 1000 --pipeline mch-data-decoder:8 --configKeyValues \"$ARGS_ALL_CONFIG\" |" 
+WORKFLOW+="o2-mch-raw-to-digits-workflow $ARGS_ALL_0 --infologger-severity error --severity warning --error-log-frequency 0 --pipeline mch-data-decoder:8 --configKeyValues \"$ARGS_ALL_CONFIG\" |" 
 #WORKFLOW+="o2-mch-raw-to-digits-workflow $ARGS_ALL_0 --infologger-severity error --severity warning  3000 --configKeyValues \"$ARGS_ALL_CONFIG\" |" 
 
-if [ -n "$WRITE_CTF" ]; then
+if [ -n "$WRITECTF" ]; then
 # Encode for CTF
 WORKFLOW+="o2-mch-entropy-encoder-workflow --ctf-dict \"$HOME/ctf_dictionary.root\" $ARGS_ALL --configKeyValues \"$ARGS_ALL_CONFIG\" |" 
 # Write CTF
-#WORKFLOW+="o2-ctf-writer-workflow $ARGS_ALL_0 --severity info --infologger-severity warning --onlyDet MCH --configKeyValues \"$ARGS_ALL_CONFIG\" --output-dir /tmp/eosbuffer | "
+WORKFLOW+="o2-ctf-writer-workflow $ARGS_ALL_0 --severity info --infologger-severity warning --onlyDet MCH --configKeyValues \"$ARGS_ALL_CONFIG\" --output-dir \"$CTF_DIR\" --min-file-size 500000000 --max-ctf-per-file 200 --meta-output-dir /data/epn2eos_tool/epn2eos | "
 fi
 
 if [ -n "$QCJSON" ]; then
